@@ -17,6 +17,12 @@ class MainFragment : Fragment() {
 
     lateinit var binding:FragmentMainBinding //утечка памяти
 
+    override fun onDestroy() {
+        super.onDestroy()
+        //binding=null
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,7 +55,7 @@ class MainFragment : Fragment() {
 
     companion object {
 
-        @JvmStatic
+
         fun newInstance() =   MainFragment()
                 }
             }
