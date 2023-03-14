@@ -12,6 +12,7 @@ import com.example.kotlinweatherapplication.R
 import com.example.kotlinweatherapplication.databinding.FragmentMainBinding
 import com.example.kotlinweatherapplication.viewmodel.AppState
 import com.example.kotlinweatherapplication.viewmodel.MainViewModel
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainFragment : Fragment() {
@@ -61,7 +62,7 @@ class MainFragment : Fragment() {
             is AppState.Success -> {
                 binding.loadingLayout.visibility = View.GONE
                 binding.message.text = "Получилось"
-            //Toast.makeText(requireContext(),"Работает",Toast.LENGTH_SHORT).show()
+
             }
         }
     }
