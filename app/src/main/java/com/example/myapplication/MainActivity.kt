@@ -3,7 +3,8 @@ package com.example.myapplication
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.kotlinweatherapplication.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        binding.btnOk.setOnClickListener {
+        //binding.btnOk.setOnClickListener {
             Log.d("TAG", "The btnOk is pushed")
         }
     }
@@ -38,4 +39,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-}
