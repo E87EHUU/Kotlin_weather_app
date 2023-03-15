@@ -50,20 +50,22 @@ class MainFragment : Fragment() {
         viewModel.getWeather()
     }
 
-    private fun renderData(data:AppState) {
-        when (data) {
-            is AppState.Error -> {
-                binding.loadingLayout.visibility = View.GONE
-                binding.message.text = "Не получилось. Ошибка: ${data.error}"
-            }
-            is AppState.Loading -> {
-                binding.loadingLayout.visibility = View.VISIBLE
-            }
-            is AppState.Success -> {
-                binding.loadingLayout.visibility = View.GONE
-                binding.message.text = "Получилось"
+    private fun renderData(data:AppState) = when (data) {
+        is AppState.Error -> {
+            binding.loadingLayout.visibility = View.GONE
+            Snackbar.make(binding.mainView,"Не получилось ${data.error}", Snackbar.LENGTH_LONG).show()
 
-            }
+        }
+        is AppState.Loading -> {
+            binding.loadingLayout.visibility = View.VISIBLE
+        }
+        is AppState.Success -> {
+            binding.loadingLayout.visibility = View.GONE
+            binding.cityName.text = data.weatherData.city.name.toString()
+            binding.temperatureValue.text = data.weatherData.temperature.toString()
+            binding.feelsLikeValue.text = data.weatherData.feelsLike.toString()
+            binding.cityCoordinates.text ="${data.weatherData.city.lat} ${data.weatherData.city.lon}"
+            Snackbar.make(binding.mainView,"Получилось", Snackbar.LENGTH_LONG).show()
         }
     }
 
