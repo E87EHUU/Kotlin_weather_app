@@ -4,8 +4,7 @@ package com.example.kotlinweatherapplication.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlinweatherapplication.R
-import com.example.kotlinweatherapplication.view.MainFragment
-import com.example.kotlinweatherapplication.view.MainActivity
+import com.example.kotlinweatherapplication.view.weatherlist.WeatherListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState==null){
-            supportFragmentManager.beginTransaction().replace(R.id.container,MainFragment.newInstance()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.container, WeatherListFragment.newInstance()).commit()
 
         }
     }
