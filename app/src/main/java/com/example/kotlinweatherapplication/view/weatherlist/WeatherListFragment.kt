@@ -44,6 +44,10 @@ class WeatherListFragment : Fragment(), OnItemClickListener {
 
     var isRussian = true
 
+    private val viewModel:MainViewModel by lazy {
+      ViewModelProvider(this)[MainViewModel::class.java]
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -51,13 +55,10 @@ class WeatherListFragment : Fragment(), OnItemClickListener {
 
         binding.recyclerView.adapter = adapter
 
-        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         //val observer = Observer<Any>{renderData(it)}
-        val observer = object : Observer<AppState> {
-            override fun onChanged(data: AppState) {
-                renderData(data)
-            }
-        }
+        val observer =  { data: AppState -> renderData(data)}
+
         viewModel.getaData().observe(viewLifecycleOwner, observer)
 
         binding.floatingActionButton.setOnClickListener {
@@ -108,11 +109,12 @@ class WeatherListFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(weather: Weather) {
-        val bundle = Bundle()
-        bundle.putParcelable(KEY_BUNDLE_KEY, weather)
         requireActivity().supportFragmentManager.beginTransaction().add(
             R.id.container,
-            DetailsFragment.newInstance(bundle)
+
+            DetailsFragment.newInstance(Bundle().apply {
+            putParcelable (KEY_BUNDLE_KEY, weather)
+            })
         ).addToBackStack("").commit()
     }
 }
