@@ -35,7 +35,7 @@ data class FactDTO(
     val season: String,
 
     @field:SerializedName("temp")
-    val temp: Int,
+    val temperature: Int,
 
     @field:SerializedName("wind_dir")
     val windDir: String,
@@ -44,5 +44,5 @@ data class FactDTO(
     val windGust: Double,
 
     @field:SerializedName("wind_speed")
-    val windSpeed: Int
+    val windSpeed: Double
 )

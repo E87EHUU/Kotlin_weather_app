@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 data class InfoDTO(
 
     @field:SerializedName("lon")
-    val lon: Int,
+    val lon: Double,
 
     @field:SerializedName("url")
     val url: String,
 
     @field:SerializedName("lat")
-    val lat: Int
+    val lat: Double
 )

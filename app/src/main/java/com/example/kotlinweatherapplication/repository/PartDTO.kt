@@ -26,7 +26,7 @@ data class PartDTO(
     val polar: Boolean,
 
     @field:SerializedName("prec_mm")
-    val precMm: Int,
+    val precMm: Double,
 
     @field:SerializedName("prec_period")
     val precPeriod: Int,
